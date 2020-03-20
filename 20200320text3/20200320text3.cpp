@@ -27,11 +27,12 @@ int main() {
 				binaryMat.at<uchar>(j, i) = 0;
 		}
 	}
-	imshow("前后交换后图", binaryMat);
 	//创建结构元素
-	/*Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
-	//闭运算
-	morphologyEx(binaryMat, binaryMat, MORPH_CLOSE, kernel);
+	Mat kernel = getStructuringElement(MORPH_RECT, Size(10, 10));
+	//开运算
+	morphologyEx(binaryMat, binaryMat, MORPH_OPEN, kernel);
+	imshow("去除连线", binaryMat);
+	
 	cv::Mat labelMat;
 	cv::Mat statsMat;
 	cv::Mat centreMat;
@@ -63,6 +64,6 @@ int main() {
 		//绘制
 		rectangle(binaryMat, bndbox, CV_RGB(255, 255, 255), 1, 8, 0);
 	}
-	imshow("results", binaryMat);*/
+	imshow("results", binaryMat);
 	waitKey(0);
 }
